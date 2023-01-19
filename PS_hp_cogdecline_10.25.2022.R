@@ -17,9 +17,9 @@ library(cowplot)
 
 # Load dataset (merging PITCH and HRS)
 
-data = read_csv("/Users/klk2131/Dropbox/Projects/PS_HP/Datasets/Merge_hrs_pitch.csv",
+data = read_csv("/Users/klk2131/Projects/PS_HP/Datasets/Merge_hrs_pitch.csv",
                 col_types = cols(.default = col_double())) 
-#rand <- read_dta("/Users/klk2131/Dropbox/Projects/PS_HP/Datasets/randhrs1992_2018v1.dta")
+#rand <- read_dta("/Users/klk2131/Projects/PS_HP/Datasets/randhrs1992_2018v1.dta")
 rand92<-rand[,c("hhidpn","r1wtresp")] #get baseline weights
 names(rand92) <- toupper(names(rand92))
 data<-left_join(data,rand92,by="HHIDPN") #add baseline weights to dataset
@@ -610,7 +610,7 @@ reg.fit4 = lmer(cog ~ AGE_R + factor(usbmxam) + factor(fbmxam) +
 #Save plots as a 3 panel plot for manuscript Figure 1
 Fig1<-plot_grid(unadj.plot,fit3.t, fit4.t,legend_b,labels=c("A","B","C"),ncol=3,nrow=2, rel_heights=c(1,.1))
 Fig1
-#ggsave("/Users/klk2131/Dropbox/Projects/PS_HP/Figures/Figure1.png", width=9, height=4.5, dpi=500)
+#ggsave("/Users/klk2131/Projects/PS_HP/Figures/Figure1.png", width=9, height=4.5, dpi=500)
 
 
 ########################################################################################################################################################################################################
